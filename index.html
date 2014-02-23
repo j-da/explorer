@@ -1,5 +1,11 @@
-<!DOCTYPE html><html><head><title>Explorer</title><style type="text/css">body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}</style></head><body><canvas id="canvas"></canvas><script type="text/javascript" src="script.js"></script></body></html>
+<!DOCTYPE html><html><head><title>Explorer</title><style type="text/css">canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#float {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}</style></head><body><canvas id="canvas"></canvas><div id="float" onclick="javascript: document.getElementById('float').style.display = 'none';"><h1>Hi. This is explorer.</h1><p>Arrow keys to move, Space or Esc to escape entrapment</p><p>Clear all tiles by walking on them</p><ul><li>Red tiles need 1 step</li><li>Orange tiles need 2 steps</li><li>... so on through the rainbow ...</li><li>Black tiles need an undeterminably large number of steps</li></ul><p>By James Daly, requires a fairly modern browser with Javascript.</p><p>To prevent showing this text, add ?hi=false to the url of this page.</p><p>(Click this text to hide it)</p></div><script type="text/javascript" src="script.js"></script></body></html>

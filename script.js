@@ -86,6 +86,10 @@
     return decodeURI(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURI(sVar).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
   };
 
+  if (loadPageVar('hi') === "false") {
+    document.getElementById('float').style.display = 'none';
+  }
+
   level2 = parseInt(loadPageVar('level'));
 
   level = isNaN(level2) ? 5 : level2;
