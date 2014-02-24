@@ -255,7 +255,6 @@
   touchKeyEvent = function(e) {
     var key, x, y;
     document.getElementById('float').style.display = 'none';
-    document.title += "TOUCH";
     x = e.clientX;
     y = e.clientY;
     if (x > width * 0.7 && y > height * 0.70) {
