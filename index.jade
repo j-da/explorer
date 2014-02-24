@@ -1,0 +1,32 @@
+!!!
+html
+  head
+    title Explorer
+    style(type="text/css")
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      #float {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+      }
+  body
+    canvas#canvas
+    #float(onclick="javascript: document.getElementById('float').style.display = 'none';")
+      h1 Hi. This is explorer.
+      p Arrow keys to move, Space or Esc to escape entrapment
+      p Clear all tiles by walking on them
+      ul
+        li Red tiles need 1 step
+        li Orange tiles need 2 steps
+        li ... so on through the rainbow ...
+        li Black tiles need an undeterminably large number of steps
+      p By James Daly, requires a fairly modern browser with Javascript.
+      p To prevent showing this text, add ?hi=false to the url of this page.
+      p (Click this text to hide it)
+
+    script(type="text/javascript", src="script.js")
