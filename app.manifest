@@ -1,6 +1,8 @@
 CACHE MANIFEST
-# Explorer Manifest V1
 
-Cache:
+# Explorer Manifest V2
+
+CACHE:
 index.html
 script.js
+app-touch-icon.png
