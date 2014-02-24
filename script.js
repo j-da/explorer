@@ -259,7 +259,7 @@
 
   touchKeyEvent = function(e) {
     var key, x, y;
-    if (window.touchEventsOk) {
+    if (window.touchEventsOk === true) {
       x = e.clientX;
       y = e.clientY;
       if (x > width * 0.7 && y > height * 0.70) {

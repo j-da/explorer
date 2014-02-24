@@ -281,7 +281,7 @@ keyEvent = (ee) ->
   actionEvent key
 
 touchKeyEvent = (e) ->
-  if (window.touchEventsOk)
+  if window.touchEventsOk is true
     x = e.clientX
     y = e.clientY
 
