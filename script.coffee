@@ -1,5 +1,7 @@
-version = '201402241722'
+version = '201402242035'
 console.log version
+
+if not window.touchEventsOk then window.touchEventsOk = false
 
 Array.prototype.remove = (arg) ->
   @splice @indexOf(arg), 1
@@ -149,7 +151,9 @@ keys = { up: "U", down: "D", left: "L", right: "R" }
 loadPageVar = (sVar) ->
   return decodeURI(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURI(sVar).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
 
-if loadPageVar('hi') is "false" then document.getElementById('float').style.display = 'none'
+if loadPageVar('hi') is "false"
+  document.getElementById('float').style.display = 'none'
+  window.touchEventsOk = true
 
 level2 = parseInt loadPageVar 'level'
 level = if isNaN(level2) then 5 else level2
@@ -238,6 +242,29 @@ cacheBoard = gameBoard.slice 0
 currentPixel = [gameBoard[0][0], gameBoard[0][1]]
 render gameBoard
 
+escapeKey = () ->
+  if gameOver
+    gameOver = false
+    lives = 3
+    level = if isNaN(level2) then 5 else level2
+    score = 0
+    gameBoard = gen level, true
+    cacheBoard = gameBoard.slice 0
+    currentPixel = [gameBoard[0][0], gameBoard[0][1]]
+    render gameBoard
+    return -1
+  if lives > 0
+    lives--
+    gameBoard = cacheBoard.slice 0
+    currentPixel = [gameBoard[0][0], gameBoard[0][1]]
+    render gameBoard
+    return -1
+  else
+    gameOver = true
+    console.log "Game Over ", {level: level, score: score}
+    renderHUD()
+    return -1
+
 keyEvent = (ee) ->
   e = if window.event then window.event else ee
   kc = e.keyCode
@@ -246,30 +273,32 @@ keyEvent = (ee) ->
   else if kc is 40 then key = keys.down
   else if kc is 37 then key = keys.left
   else if kc is 39 then key = keys.right
-  else if kc is 27 or kc is 32
-    if gameOver
-      gameOver = false
-      lives = 3
-      level = if isNaN(level2) then 5 else level2
-      score = 0
-      gameBoard = gen level, true
-      cacheBoard = gameBoard.slice 0
-      currentPixel = [gameBoard[0][0], gameBoard[0][1]]
-      render gameBoard
+  else if kc is 27 or kc is 32 then return escapeKey()
+  else
+    console.log "Input blocked: unknown key"
+    return -1
 
-      return -1
-    if lives > 0
-      lives--
-      gameBoard = cacheBoard.slice 0
-      currentPixel = [gameBoard[0][0], gameBoard[0][1]]
-      render gameBoard
-      return -1
+  actionEvent key
+
+touchKeyEvent = (e) ->
+  if (window.touchEventsOk)
+    x = e.clientX
+    y = e.clientY
+
+    if x > width * 0.7 and y > height * 0.70 then return escapeKey()
+    else if x > width * 0.35 and x < width * 0.65 and y < height * 0.30 then key = keys.up
+    else if x > width * 0.35 and x < width * 0.65 and y > height * 0.70 then key = keys.down
+    else if x < width * 0.30 then key = keys.left
+    else if x > width * 0.70 then key = keys.right
     else
-      gameOver = true
-      console.log "Game Over ", {level: level, score: score}
-      renderHUD()
+      console.log "Input blocked: unknown key"
       return -1
-  
+
+    actionEvent key
+
+  return 0
+
+actionEvent = (key) ->
   switch key
     when keys.up then currentPixel2 = [currentPixel[0], currentPixel[1] - 1]
     when keys.down then currentPixel2 = [currentPixel[0], currentPixel[1] + 1]
@@ -308,6 +337,7 @@ keyEvent = (ee) ->
   0
 
 document.addEventListener 'keyup', keyEvent, false
+document.addEventListener 'click', touchKeyEvent, false
 
 window.addEventListener 'resize', (e) ->
   console.log "Resize"

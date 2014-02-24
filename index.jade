@@ -16,9 +16,10 @@ html
       }
   body
     canvas#canvas
-    #float(onclick="javascript: document.getElementById('float').style.display = 'none';")
+    #float(onclick="javascript: document.getElementById('float').style.display = 'none'; window.touchEventsOk = true;")
       h1 Hi. This is explorer.
-      p Arrow keys to move, Space or Esc to escape entrapment
+      p Arrow keys to move, Space or Esc to escape
+      p Playing without a keyboard? Click on the side of the screen you want to move to, or the bottom-right corner to escape
       p Clear all tiles by walking on them
       ul
         li Red tiles need 1 step
