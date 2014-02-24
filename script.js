@@ -2,13 +2,9 @@
 (function() {
   var actionEvent, background, cacheBoard, canvas, context, currentPixel, escapeKey, finSym, gameBoard, gameOver, gen, hearts, height, keyEvent, keys, level, level2, lives, loadPageVar, numbers, palette, pixelHeight, pixelSize, pixelWidth, render, renderHUD, renderSymbol, score, stroke, textColor, touchKeyEvent, version, width;
 
-  version = '201402242052';
+  version = '201402242100';
 
   console.log(version);
-
-  if (!window.touchEventsOk) {
-    window.touchEventsOk = false;
-  }
 
   Array.prototype.remove = function(arg) {
     return this.splice(this.indexOf(arg), 1);
@@ -92,7 +88,6 @@
 
   if (loadPageVar('hi') === "false") {
     document.getElementById('float').style.display = 'none';
-    window.touchEventsOk = true;
   }
 
   level2 = parseInt(loadPageVar('level'));
@@ -259,25 +254,24 @@
 
   touchKeyEvent = function(e) {
     var key, x, y;
-    if (window.touchEventsOk === true) {
-      x = e.clientX;
-      y = e.clientY;
-      if (x > width * 0.7 && y > height * 0.70) {
-        return escapeKey();
-      } else if (x > width * 0.35 && x < width * 0.65 && y < height * 0.30) {
-        key = keys.up;
-      } else if (x > width * 0.35 && x < width * 0.65 && y > height * 0.70) {
-        key = keys.down;
-      } else if (x < width * 0.30 && y > height * 0.35 && y < height * 0.65) {
-        key = keys.left;
-      } else if (x > width * 0.70 && y > height * 0.35 && y < height * 0.65) {
-        key = keys.right;
-      } else {
-        console.log("Input blocked: unknown key");
-        return -1;
-      }
-      actionEvent(key);
+    document.getElementById('float').style.display = 'none';
+    x = e.clientX;
+    y = e.clientY;
+    if (x > width * 0.7 && y > height * 0.70) {
+      return escapeKey();
+    } else if (x > width * 0.35 && x < width * 0.65 && y < height * 0.30) {
+      key = keys.up;
+    } else if (x > width * 0.35 && x < width * 0.65 && y > height * 0.70) {
+      key = keys.down;
+    } else if (x < width * 0.30 && y > height * 0.35 && y < height * 0.65) {
+      key = keys.left;
+    } else if (x > width * 0.70 && y > height * 0.35 && y < height * 0.65) {
+      key = keys.right;
+    } else {
+      console.log("Input blocked: unknown key");
+      return -1;
     }
+    actionEvent(key);
     return 0;
   };
 

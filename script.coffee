@@ -1,7 +1,5 @@
-version = '201402242052'
+version = '201402242100'
 console.log version
-
-if not window.touchEventsOk then window.touchEventsOk = false
 
 Array.prototype.remove = (arg) ->
   @splice @indexOf(arg), 1
@@ -151,9 +149,7 @@ keys = { up: "U", down: "D", left: "L", right: "R" }
 loadPageVar = (sVar) ->
   return decodeURI(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURI(sVar).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
 
-if loadPageVar('hi') is "false"
-  document.getElementById('float').style.display = 'none'
-  window.touchEventsOk = true
+if loadPageVar('hi') is "false" then document.getElementById('float').style.display = 'none'
 
 level2 = parseInt loadPageVar 'level'
 level = if isNaN(level2) then 5 else level2
@@ -281,20 +277,21 @@ keyEvent = (ee) ->
   actionEvent key
 
 touchKeyEvent = (e) ->
-  if window.touchEventsOk is true
-    x = e.clientX
-    y = e.clientY
+  document.getElementById('float').style.display = 'none'
+  
+  x = e.clientX
+  y = e.clientY
 
-    if x > width * 0.7 and y > height * 0.70 then return escapeKey()
-    else if x > width * 0.35 and x < width * 0.65 and y < height * 0.30 then key = keys.up
-    else if x > width * 0.35 and x < width * 0.65 and y > height * 0.70 then key = keys.down
-    else if x < width * 0.30 and y > height * 0.35 and y < height * 0.65 then key = keys.left
-    else if x > width * 0.70 and y > height * 0.35 and y < height * 0.65 then key = keys.right
-    else
-      console.log "Input blocked: unknown key"
-      return -1
+  if x > width * 0.7 and y > height * 0.70 then return escapeKey()
+  else if x > width * 0.35 and x < width * 0.65 and y < height * 0.30 then key = keys.up
+  else if x > width * 0.35 and x < width * 0.65 and y > height * 0.70 then key = keys.down
+  else if x < width * 0.30 and y > height * 0.35 and y < height * 0.65 then key = keys.left
+  else if x > width * 0.70 and y > height * 0.35 and y < height * 0.65 then key = keys.right
+  else
+    console.log "Input blocked: unknown key"
+    return -1
 
-    actionEvent key
+  actionEvent key
 
   return 0
 
