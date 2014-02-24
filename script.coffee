@@ -279,8 +279,8 @@ keyEvent = (ee) ->
 touchKeyEvent = (e) ->
   document.getElementById('float').style.display = 'none'
 
-  x = e.clientX
-  y = e.clientY
+  x = if e.touches then e.touches[0].clientX else e.clientX
+  y = if e.touches then e.touches[0].clientY else e.clientY
 
   if x > width * 0.7 and y > height * 0.70 then return escapeKey()
   else if x > width * 0.35 and x < width * 0.65 and y < height * 0.30 then key = keys.up

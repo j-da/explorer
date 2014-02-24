@@ -255,8 +255,8 @@
   touchKeyEvent = function(e) {
     var key, x, y;
     document.getElementById('float').style.display = 'none';
-    x = e.clientX;
-    y = e.clientY;
+    x = e.touches ? e.touches[0].clientX : e.clientX;
+    y = e.touches ? e.touches[0].clientY : e.clientY;
     if (x > width * 0.7 && y > height * 0.70) {
       return escapeKey();
     } else if (x > width * 0.35 && x < width * 0.65 && y < height * 0.30) {
