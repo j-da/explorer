@@ -2,7 +2,7 @@
 (function() {
   var background, cacheBoard, canvas, context, currentPixel, finSym, gameBoard, gameOver, gen, hearts, height, keyEvent, keys, level, level2, lives, loadPageVar, numbers, palette, pixelHeight, pixelSize, pixelWidth, render, renderHUD, renderSymbol, score, stroke, textColor, version, width;
 
-  version = '201402232137';
+  version = '201402241722';
 
   console.log(version);
 
@@ -61,7 +61,7 @@
 
   palette = [[191, 0, 0], [239, 127, 0], [255, 191, 0], [0, 191, 0], [0, 191, 191], [31, 0, 191], [191, 0, 255], [255, 0, 191], [0, 0, 0]];
 
-  textColor = [223, 223, 223];
+  textColor = [191, 191, 191];
 
   hearts = [[[0, 0, 0], [1, 0, 1], [1, 1, 1], [0, 1, 0], [0, 0, 0]]];
 
@@ -145,7 +145,7 @@
 
   renderSymbol = function(symbolset, number, offsetX, offsetY) {
     var i, j, k, numString, _i, _j, _k, _ref, _ref1, _ref2;
-    context.fillStyle = "rgb(" + textColor[0] + ", " + textColor[1] + ", " + textColor[2];
+    context.fillStyle = "rgb(" + textColor[0] + ", " + textColor[1] + ", " + textColor[2] + ")";
     numString = number.toString();
     for (i = _i = 0, _ref = numString.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
       for (j = _j = 0, _ref1 = symbolset[parseInt(numString[i])].length; 0 <= _ref1 ? _j < _ref1 : _j > _ref1; j = 0 <= _ref1 ? ++_j : --_j) {
@@ -234,6 +234,10 @@
         return -1;
       } else {
         gameOver = true;
+        console.log("Game Over ", {
+          level: level,
+          score: score
+        });
         renderHUD();
         return -1;
       }
