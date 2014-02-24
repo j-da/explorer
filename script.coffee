@@ -1,4 +1,4 @@
-version = '201402242035'
+version = '201402242052'
 console.log version
 
 if not window.touchEventsOk then window.touchEventsOk = false
@@ -288,8 +288,8 @@ touchKeyEvent = (e) ->
     if x > width * 0.7 and y > height * 0.70 then return escapeKey()
     else if x > width * 0.35 and x < width * 0.65 and y < height * 0.30 then key = keys.up
     else if x > width * 0.35 and x < width * 0.65 and y > height * 0.70 then key = keys.down
-    else if x < width * 0.30 then key = keys.left
-    else if x > width * 0.70 then key = keys.right
+    else if x < width * 0.30 and y > height * 0.35 and y < height * 0.65 then key = keys.left
+    else if x > width * 0.70 and y > height * 0.35 and y < height * 0.65 then key = keys.right
     else
       console.log "Input blocked: unknown key"
       return -1
@@ -338,6 +338,7 @@ actionEvent = (key) ->
 
 document.addEventListener 'keyup', keyEvent, false
 document.addEventListener 'click', touchKeyEvent, false
+document.addEventListener 'touchstart', touchKeyEvent, false
 
 window.addEventListener 'resize', (e) ->
   console.log "Resize"

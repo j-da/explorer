@@ -2,7 +2,7 @@
 (function() {
   var actionEvent, background, cacheBoard, canvas, context, currentPixel, escapeKey, finSym, gameBoard, gameOver, gen, hearts, height, keyEvent, keys, level, level2, lives, loadPageVar, numbers, palette, pixelHeight, pixelSize, pixelWidth, render, renderHUD, renderSymbol, score, stroke, textColor, touchKeyEvent, version, width;
 
-  version = '201402242035';
+  version = '201402242052';
 
   console.log(version);
 
@@ -268,9 +268,9 @@
         key = keys.up;
       } else if (x > width * 0.35 && x < width * 0.65 && y > height * 0.70) {
         key = keys.down;
-      } else if (x < width * 0.30) {
+      } else if (x < width * 0.30 && y > height * 0.35 && y < height * 0.65) {
         key = keys.left;
-      } else if (x > width * 0.70) {
+      } else if (x > width * 0.70 && y > height * 0.35 && y < height * 0.65) {
         key = keys.right;
       } else {
         console.log("Input blocked: unknown key");
@@ -330,6 +330,8 @@
   document.addEventListener('keyup', keyEvent, false);
 
   document.addEventListener('click', touchKeyEvent, false);
+
+  document.addEventListener('touchstart', touchKeyEvent, false);
 
   window.addEventListener('resize', function(e) {
     console.log("Resize");
