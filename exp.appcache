@@ -5,4 +5,5 @@ CACHE MANIFEST
 CACHE:
 index.html
 script.js
-app-touch-icon.png
+apple-touch-icon.png
+favicon.png
