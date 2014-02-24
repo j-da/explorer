@@ -278,7 +278,8 @@ keyEvent = (ee) ->
 
 touchKeyEvent = (e) ->
   document.getElementById('float').style.display = 'none'
-  
+  document.title += "TOUCH"
+
   x = e.clientX
   y = e.clientY
 
