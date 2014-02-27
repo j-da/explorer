@@ -2,7 +2,7 @@
 (function() {
   var HUDArray, actionEvent, background, boardSize, cacheBoard, canvas, context, currentPixel, escapeKey, finSym, gameBoard, gameOver, gen, hearts, height, i, keyEvent, keys, lastPixel, level, level2, lives, loadPageVar, numbers, palette, pixelHeight, pixelSize, pixelWidth, renderFull, renderHUD, renderSymbol, renderUpdate, score, stepsLeft, stroke, textColor, touchKeyEvent, version, width, _i, _ref;
 
-  version = '201402271032';
+  version = '201402271910';
 
   console.log(version);
 
@@ -309,7 +309,7 @@
         console.log("Input blocked: unknown key");
         return -1;
     }
-    if (currentPixel[1] < 1 || currentPixel2[1] > gameBoard.length - 1 || currentPixel[0] < 1 || currentPixel2[0] > gameBoard[0].length - 1 || gameBoard[currentPixel2[1]][currentPixel2[0]] < 1) {
+    if (currentPixel2[1] < 0 || currentPixel2[1] > gameBoard.length - 1 || currentPixel2[0] < 0 || currentPixel2[0] > gameBoard[0].length - 1 || gameBoard[currentPixel2[1]][currentPixel2[0]] < 1) {
       console.log("Input blocked: not valid tile " + currentPixel2);
       return -1;
     }
