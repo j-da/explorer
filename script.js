@@ -169,7 +169,6 @@
       renderSymbol(finSym, 123, Math.ceil(pixelWidth * .5 - 1.5 * (finSym[0][0].length + 1)), Math.ceil((pixelHeight - finSym[0].length) * .5));
     }
     renderSymbol(numbers, level, 1, 1);
-    renderSymbol(numbers, score, pixelWidth - (numbers[0][0].length + 1) * score.toString().length + 1, numbers[0].length + 2);
     for (i = _k = 0; 0 <= lives ? _k < lives : _k > lives; i = 0 <= lives ? ++_k : --_k) {
       renderSymbol(hearts, 0, pixelWidth - (hearts[0][0].length + 1) * (i + 1) + 1, 1);
     }
@@ -224,7 +223,7 @@
     context.strokeRect(currentPixel[0] * pixelSize[0] + 0.5, currentPixel[1] * pixelSize[1] + 0.5, pixelSize[0] - 1, pixelSize[1] - 1);
     context.strokeStyle = stroke[1];
     context.strokeRect(currentPixel[0] * pixelSize[0] + 1.5, currentPixel[1] * pixelSize[1] + 1.5, pixelSize[0] - 3, pixelSize[1] - 3);
-    if (currentPixel[1] < 13) {
+    if (currentPixel[1] < 7) {
       context.fillStyle = "rgb(" + textColor[0] + ", " + textColor[1] + ", " + textColor[2] + ")";
       if (pixelSet[lastPixel[1]][lastPixel[0]] === 0 && HUDArray[lastPixel[1]][lastPixel[0]] === 1) {
         context.fillRect(lastPixel[0] * pixelSize[0], lastPixel[1] * pixelSize[1], pixelSize[0], pixelSize[1]);

@@ -221,7 +221,6 @@ renderHUD = () ->
     context.fillRect (Math.ceil(pixelWidth * .5 - 1.5 * (finSym[0][0].length + 1)) - 0.5) * pixelSize[0], (Math.ceil((pixelHeight - finSym[0].length) * .5) - 0.5) * pixelSize[1], (finSym[0][0].length + 1) * 3 * pixelSize[0], (finSym[0].length + 1) * pixelSize[1]
     renderSymbol finSym, 123, Math.ceil(pixelWidth * .5 - 1.5 * (finSym[0][0].length + 1)), Math.ceil((pixelHeight - finSym[0].length) * .5)
   renderSymbol numbers, level, 1, 1
-  renderSymbol numbers, score, pixelWidth - (numbers[0][0].length + 1) * score.toString().length + 1, numbers[0].length + 2
   for i in [0...lives]
     renderSymbol hearts, 0, pixelWidth - (hearts[0][0].length + 1) * (i + 1) + 1, 1
 
@@ -276,7 +275,7 @@ renderUpdate = (pixelSet) ->
   
   # If the newly rendered pixels overlap the HUD, it needs to be evaluated and redrawn.
   # This occurs if the currentPixel's y-coordinate is less than one more than the height of the HUD, including y-offset, assuming the HUD is at the top of the screen.
-  if currentPixel[1] < 13
+  if currentPixel[1] < 7
     context.fillStyle = "rgb(#{textColor[0]}, #{textColor[1]}, #{textColor[2]})"
     if pixelSet[lastPixel[1]][lastPixel[0]] is 0 and HUDArray[lastPixel[1]][lastPixel[0]] is 1 then context.fillRect lastPixel[0] * pixelSize[0], lastPixel[1] * pixelSize[1], pixelSize[0], pixelSize[1]
     if pixelSet[currentPixel[1]][currentPixel[0]] is 0 and HUDArray[currentPixel[1]][currentPixel[0]] is 1 then context.fillRect currentPixel[0] * pixelSize[0], currentPixel[1] * pixelSize[1], pixelSize[0], pixelSize[1]
