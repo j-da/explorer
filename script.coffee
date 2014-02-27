@@ -167,9 +167,9 @@ gen = (size) ->
     actions = [keys.up, keys.down, keys.left, keys.right]
 
     if currentPixel[1] < 2 then actions.remove keys.up
-    else if currentPixel[1] is pixelHeight - 1 then actions.remove keys.down
+    else if currentPixel[1] > pixelHeight - 2 then actions.remove keys.down
     else if currentPixel[0] < 2 then actions.remove keys.left
-    else if currentPixel[0] is pixelWidth - 1 then actions.remove keys.right
+    else if currentPixel[0] > pixelWidth - 2 then actions.remove keys.right
 
     if i > 0
       switch moveset[i - 1]
@@ -330,7 +330,7 @@ actionEvent = (key) ->
       console.log "Input blocked: unknown key"
       return -1
 
-  if gameBoard[currentPixel2[1]][currentPixel2[0]] < 1
+  if currentPixel[1] < 2 or currentPixel2[1] > gameBoard.length - 2 or currentPixel[0] < 2 or currentPixel2[0] > gameBoard[0].length - 2 or gameBoard[currentPixel2[1]][currentPixel2[0]] < 1
     console.log "Input blocked: not valid tile #{currentPixel2}"
     return -1
 
