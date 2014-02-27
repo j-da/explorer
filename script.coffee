@@ -166,9 +166,9 @@ gen = (size) ->
   for i in [0...size]
     actions = [keys.up, keys.down, keys.left, keys.right]
 
-    if currentPixel[1] is 0 then actions.remove keys.up
+    if currentPixel[1] is 1 then actions.remove keys.up
     else if currentPixel[1] is pixelHeight - 1 then actions.remove keys.down
-    else if currentPixel[0] is 0 then actions.remove keys.left
+    else if currentPixel[0] is 1 then actions.remove keys.left
     else if currentPixel[0] is pixelWidth - 1 then actions.remove keys.right
 
     if i > 0
