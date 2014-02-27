@@ -289,8 +289,9 @@
 
   actionEvent = function(key) {
     var currentPixel2, _j, _ref1;
-    if (gameOver) return -1;
-
+    if (gameOver) {
+      return -1;
+    }
     switch (key) {
       case keys.up:
         currentPixel2 = [currentPixel[0], currentPixel[1] - 1];
@@ -308,7 +309,7 @@
         console.log("Input blocked: unknown key");
         return -1;
     }
-    if (currentPixel[1] < 2 || currentPixel2[1] > gameBoard.length - 1 || currentPixel[0] < 2 || currentPixel2[0] > gameBoard[0].length - 1 || gameBoard[currentPixel2[1]][currentPixel2[0]] < 1) {
+    if (currentPixel[1] < 1 || currentPixel2[1] > gameBoard.length - 1 || currentPixel[0] < 1 || currentPixel2[0] > gameBoard[0].length - 1 || gameBoard[currentPixel2[1]][currentPixel2[0]] < 1) {
       console.log("Input blocked: not valid tile " + currentPixel2);
       return -1;
     }
