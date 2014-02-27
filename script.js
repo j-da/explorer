@@ -381,8 +381,8 @@
 
   document.addEventListener('touchstart', touchKeyEvent, false);
 
-  document.addEventListener('touchmove', (function(e) {
+  document.addEventListener('touchmove', function(e) {
     return e.preventDefault();
-  }), false);
+  });
 
 }).call(this);

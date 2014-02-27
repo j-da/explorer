@@ -392,4 +392,4 @@ touchKeyEvent = (e) ->
 document.addEventListener 'keyup', keyEvent, false
 document.addEventListener 'click', touchKeyEvent, false
 document.addEventListener 'touchstart', touchKeyEvent, false
-document.addEventListener 'touchmove', ((e) -> e.preventDefault()), false
+document.addEventListener 'touchmove', (e) -> e.preventDefault()
