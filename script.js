@@ -91,11 +91,11 @@
     pixelSet[currentPixel[1]][currentPixel[0]]++;
     for (i = _k = 0; 0 <= size ? _k < size : _k > size; i = 0 <= size ? ++_k : --_k) {
       actions = [keys.up, keys.down, keys.left, keys.right];
-      if (currentPixel[1] === 1) {
+      if (currentPixel[1] < 2) {
         actions.remove(keys.up);
       } else if (currentPixel[1] === pixelHeight - 1) {
         actions.remove(keys.down);
-      } else if (currentPixel[0] === 1) {
+      } else if (currentPixel[0] < 2) {
         actions.remove(keys.left);
       } else if (currentPixel[0] === pixelWidth - 1) {
         actions.remove(keys.right);
