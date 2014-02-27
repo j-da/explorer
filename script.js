@@ -2,7 +2,7 @@
 (function() {
   var HUDArray, actionEvent, background, boardSize, cacheBoard, canvas, context, currentPixel, escapeKey, finSym, gameBoard, gameOver, gen, hearts, height, i, keyEvent, keys, lastPixel, level, level2, lives, loadPageVar, numbers, palette, pixelHeight, pixelSize, pixelWidth, renderFull, renderHUD, renderSymbol, renderUpdate, score, stepsLeft, stroke, textColor, touchKeyEvent, version, width, _i, _ref;
 
-  version = '201402271027';
+  version = '201402271032';
 
   console.log(version);
 
@@ -381,7 +381,7 @@
 
   document.addEventListener('touchstart', touchKeyEvent, false);
 
-  document.addEventListener('touchmove', function(e) {
+  document.body.addEventListener('touchmove', function(e) {
     return e.preventDefault();
   });
 

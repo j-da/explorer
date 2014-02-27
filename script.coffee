@@ -1,4 +1,4 @@
-version = '201402271027'
+version = '201402271032'
 console.log version
 
 # UTILITIES
@@ -392,4 +392,4 @@ touchKeyEvent = (e) ->
 document.addEventListener 'keyup', keyEvent, false
 document.addEventListener 'click', touchKeyEvent, false
 document.addEventListener 'touchstart', touchKeyEvent, false
-document.addEventListener 'touchmove', (e) -> e.preventDefault()
+document.body.addEventListener 'touchmove', (e) -> e.preventDefault()
