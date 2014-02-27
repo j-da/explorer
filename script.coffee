@@ -321,6 +321,7 @@ escapeKey = () ->
   0
 
 actionEvent = (key) ->
+  if gameOver then return -1
   switch key
     when keys.up then currentPixel2 = [currentPixel[0], currentPixel[1] - 1]
     when keys.down then currentPixel2 = [currentPixel[0], currentPixel[1] + 1]
@@ -330,7 +331,7 @@ actionEvent = (key) ->
       console.log "Input blocked: unknown key"
       return -1
 
-  if currentPixel[1] < 2 or currentPixel2[1] > gameBoard.length - 2 or currentPixel[0] < 2 or currentPixel2[0] > gameBoard[0].length - 2 or gameBoard[currentPixel2[1]][currentPixel2[0]] < 1
+  if currentPixel[1] < 2 or currentPixel2[1] > gameBoard.length - 1 or currentPixel[0] < 2 or currentPixel2[0] > gameBoard[0].length - 1 or gameBoard[currentPixel2[1]][currentPixel2[0]] < 1
     console.log "Input blocked: not valid tile #{currentPixel2}"
     return -1
 
