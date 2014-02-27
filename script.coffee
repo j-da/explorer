@@ -371,6 +371,8 @@ keyEvent = (ee) ->
   actionEvent key
 
 touchKeyEvent = (e) ->
+  e.preventDefault()
+
   document.getElementById('float').style.display = 'none'
 
   x = if e.touches then e.touches[0].clientX else e.clientX

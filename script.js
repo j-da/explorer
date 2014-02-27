@@ -354,6 +354,7 @@
 
   touchKeyEvent = function(e) {
     var key, x, y;
+    e.preventDefault();
     document.getElementById('float').style.display = 'none';
     x = e.touches ? e.touches[0].clientX : e.clientX;
     y = e.touches ? e.touches[0].clientY : e.clientY;
