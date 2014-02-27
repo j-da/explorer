@@ -1,4 +1,4 @@
-version = '201402270924'
+version = '201402270941'
 console.log version
 
 # UTILITIES
@@ -277,8 +277,9 @@ renderUpdate = (pixelSet) ->
   # If the newly rendered pixels overlap the HUD, it needs to be evaluated and redrawn.
   # This occurs if the currentPixel's y-coordinate is less than one more than the height of the HUD, including y-offset, assuming the HUD is at the top of the screen.
   if currentPixel[1] < 13
-    if HUDArray[lastPixel[1]][lastPixel[0]] is 1 then context.fillRect lastPixel[0] * pixelSize[0], lastPixel[1] * pixelSize[1], pixelSize[0], pixelSize[1]
-    if HUDArray[currentPixel[1]][currentPixel[0]] is 1 then context.fillRect currentPixel[0] * pixelSize[0], currentPixel[1] * pixelSize[1], pixelSize[0], pixelSize[1]
+    context.fillStyle = "rgb(#{textColor[0]}, #{textColor[1]}, #{textColor[2]})"
+    if pixelSet[lastPixel[1]][lastPixel[0]] is 0 and HUDArray[lastPixel[1]][lastPixel[0]] is 1 then context.fillRect lastPixel[0] * pixelSize[0], lastPixel[1] * pixelSize[1], pixelSize[0], pixelSize[1]
+    if pixelSet[currentPixel[1]][currentPixel[0]] is 0 and HUDArray[currentPixel[1]][currentPixel[0]] is 1 then context.fillRect currentPixel[0] * pixelSize[0], currentPixel[1] * pixelSize[1], pixelSize[0], pixelSize[1]
 
   0
 

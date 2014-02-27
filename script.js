@@ -2,7 +2,7 @@
 (function() {
   var HUDArray, actionEvent, background, boardSize, cacheBoard, canvas, context, currentPixel, escapeKey, finSym, gameBoard, gameOver, gen, hearts, height, i, keyEvent, keys, lastPixel, level, level2, lives, loadPageVar, numbers, palette, pixelHeight, pixelSize, pixelWidth, renderFull, renderHUD, renderSymbol, renderUpdate, score, stepsLeft, stroke, textColor, touchKeyEvent, version, width, _i, _ref;
 
-  version = '201402270924';
+  version = '201402270941';
 
   console.log(version);
 
@@ -225,10 +225,11 @@
     context.strokeStyle = stroke[1];
     context.strokeRect(currentPixel[0] * pixelSize[0] + 1.5, currentPixel[1] * pixelSize[1] + 1.5, pixelSize[0] - 3, pixelSize[1] - 3);
     if (currentPixel[1] < 13) {
-      if (HUDArray[lastPixel[1]][lastPixel[0]] === 1) {
+      context.fillStyle = "rgb(" + textColor[0] + ", " + textColor[1] + ", " + textColor[2] + ")";
+      if (pixelSet[lastPixel[1]][lastPixel[0]] === 0 && HUDArray[lastPixel[1]][lastPixel[0]] === 1) {
         context.fillRect(lastPixel[0] * pixelSize[0], lastPixel[1] * pixelSize[1], pixelSize[0], pixelSize[1]);
       }
-      if (HUDArray[currentPixel[1]][currentPixel[0]] === 1) {
+      if (pixelSet[currentPixel[1]][currentPixel[0]] === 0 && HUDArray[currentPixel[1]][currentPixel[0]] === 1) {
         context.fillRect(currentPixel[0] * pixelSize[0], currentPixel[1] * pixelSize[1], pixelSize[0], pixelSize[1]);
       }
     }
