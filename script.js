@@ -93,11 +93,11 @@
       actions = [keys.up, keys.down, keys.left, keys.right];
       if (currentPixel[1] < 2) {
         actions.remove(keys.up);
-      } else if (currentPixel[1] === pixelHeight - 1) {
+      } else if (currentPixel[1] > pixelHeight - 2) {
         actions.remove(keys.down);
       } else if (currentPixel[0] < 2) {
         actions.remove(keys.left);
-      } else if (currentPixel[0] === pixelWidth - 1) {
+      } else if (currentPixel[0] > pixelWidth - 2) {
         actions.remove(keys.right);
       }
       if (i > 0) {
@@ -306,7 +306,7 @@
         console.log("Input blocked: unknown key");
         return -1;
     }
-    if (gameBoard[currentPixel2[1]][currentPixel2[0]] < 1) {
+    if (gameBoard[currentPixel[1] < 2 || currentPixel2[1] > gameBoard.length - 2 || currentPixel[0] < 2 || currentPixel2[0] > gameBoard[0].length - 2 || gameBoard[currentPixel2[1]][currentPixel2[0]] < 1) {
       console.log("Input blocked: not valid tile " + currentPixel2);
       return -1;
     }
