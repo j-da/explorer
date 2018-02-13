@@ -9,7 +9,3 @@ Clear all the tiles by walking on them.
  - Green tiles need 3 steps
  - ...
  - Black tiles need an undeterminably large number of steps
-
-By James Daly, hereby gifted to you all under the liberal MIT License
-
-MIT Admissions, if you see this... hi. Can I attend your college please?
